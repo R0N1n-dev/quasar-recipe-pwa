@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div class="row">
-      <div class="col col-md-6 col-sm-12" >
+      <div class="col col-md-6 col-sm-12 col-xs-10" >
         <q-input
           autogrow
           type="text"
@@ -30,7 +30,7 @@
         </div>
         <q-btn @click.prevent="addRecipe">Add</q-btn>
       </div>
-      <div class="col col-md-8 col-sm-8">
+      <div class="col col-md-8 col-sm-8 col-xs-10">
         <RecipesView :recipes="recipes" @delete="deleteRecipe" />
       </div>
     </div>
