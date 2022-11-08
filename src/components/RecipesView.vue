@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Hey</h2>
+    <h2>Recipes</h2>
     <div class="row" v-if="recipes.length > 0">
       <div class="col" v-for="recipe in recipes" :key="recipe.id">
         <q-card>

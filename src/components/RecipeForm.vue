@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div class="row">
-      <div class="col col-md-6 col-sm-12 col-xs-10" >
+      <div class="col col-md-6 col-sm-12 col-xs-10">
         <q-input
           autogrow
           type="text"
@@ -24,11 +24,17 @@
         <q-btn class="button is-primary" @click.prevent="addIn">
           Add ingredient
         </q-btn>
+        <div v-if="ingredients.length > 0">
+          {{ ingredients.length }} ingredients
+        </div>
         <div>
           <q-input v-model="step" filled autogrow></q-input>
           <q-btn @click.prevent="addStep">Add step</q-btn>
         </div>
-        <q-btn @click.prevent="addRecipe">Add</q-btn>
+        <div v-if="cookingSteps.length > 0">
+          {{ cookingSteps.length }} steps
+        </div>
+        <q-btn @click.prevent="addRecipe">Add recipe</q-btn>
       </div>
       <div class="col col-md-8 col-sm-8 col-xs-10">
         <RecipesView :recipes="recipes" @delete="deleteRecipe" />
@@ -88,6 +94,8 @@ export default {
         console.log("New recipe added");
         this.name = "";
         this.type = "";
+        this.ingredients.length = 0;
+        this.cookingSteps.length = 0;
         this.reLoad(200);
         this.getRecipes();
       } catch (error) {
