@@ -2,14 +2,15 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <q-icon name="edit" style="font-size: 1.4rem;"/>
+        <!--<q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+        />-->
 
         <q-toolbar-title>
           Recipe Book
@@ -19,7 +20,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!--<q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -38,7 +39,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer>-->
 
     <q-page-container>
       <router-view />
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+//import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
@@ -97,11 +98,11 @@ const linksData = [
 export default {
   name: 'MainLayout',
   components: {
-    EssentialLink
+    //EssentialLink
   },
   data () {
     return {
-      leftDrawerOpen: false,
+      //leftDrawerOpen: false,
       essentialLinks: linksData
     }
   }
