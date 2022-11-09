@@ -25,14 +25,20 @@
           Add ingredient
         </q-btn>
         <div v-if="ingredients.length > 0">
-          {{ ingredients.length }} ingredients
+          <ul>
+            <li v-for="ingredient in ingredients" :key="ingredient">
+              {{ ingredient }}
+            </li>
+          </ul>
         </div>
         <div>
           <q-input v-model="step" filled autogrow></q-input>
           <q-btn @click.prevent="addStep">Add step</q-btn>
         </div>
         <div v-if="cookingSteps.length > 0">
-          {{ cookingSteps.length }} steps
+          <ol>
+            <li v-for="step in cookingSteps" :key="step">{{ step }}</li>
+          </ol>
         </div>
         <q-btn @click.prevent="addRecipe">Add recipe</q-btn>
       </div>

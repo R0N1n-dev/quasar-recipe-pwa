@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Recipe Book
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Rocipy</div>
       </q-toolbar>
     </q-header>
 
