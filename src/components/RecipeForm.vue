@@ -3,7 +3,14 @@
     <div class="row">
       <div class="col col-md-6 col-sm-12 col-xs-10">
         <div class="q-pa-md">
-          <q-stepper v-model="step" vertical header-nav color="primary" keep-alive animated>
+          <q-stepper
+            v-model="step"
+            vertical
+            header-nav
+            color="primary"
+            keep-alive
+            animated
+          >
             <q-step
               :name="1"
               title="Name of dish"
@@ -16,6 +23,7 @@
                 class="input my-1"
                 placeholder="name"
                 v-model="name"
+                label="Name of dish"
               />
 
               <q-stepper-navigation>
@@ -35,6 +43,7 @@
                 class="input my-1"
                 placeholder="type"
                 v-model="type"
+                label="Type of dish"
               />
 
               <q-stepper-navigation>
@@ -61,6 +70,7 @@
                 class="input my-1"
                 placeholder="ingredientMeasure"
                 v-model="inMeasure"
+                label="Ingredient + measure"
               />
               <q-btn class="button is-primary" @click.prevent="addIn">
                 Add ingredient
@@ -69,6 +79,9 @@
                 <ul>
                   <li v-for="ingredient in ingredients" :key="ingredient">
                     {{ ingredient }}
+                    <span style="cursor: pointer"
+                      ><q-icon name="delete" @click.prevent="removeIngredient"
+                    /></span>
                   </li>
                 </ul>
               </div>
@@ -91,7 +104,11 @@
               </div>
               <div v-if="cookingSteps.length > 0">
                 <ol>
-                  <li v-for="step in cookingSteps" :key="step">{{ step }}</li>
+                  <li v-for="step in cookingSteps" :key="step">{{ step }}
+                    <span style="cursor: pointer"
+                      ><q-icon name="delete" @click.prevent="removeCookingStep"
+                    /></span>
+                  </li>
                 </ol>
               </div>
               <q-stepper-navigation>
@@ -111,7 +128,6 @@
             </q-step>
           </q-stepper>
         </div>
-
         <div class="col col-md-8 col-sm-8 col-xs-10">
           <RecipesView :recipes="recipes" @delete="deleteRecipe" />
         </div>
@@ -148,6 +164,12 @@ export default {
         alert("No ingredient, please add");
         return;
       }
+    },
+    removeIngredient() {
+      this.ingredients.length > 0 && this.ingredients.shift();
+    },
+    removeCookingStep() {
+      this.cookingSteps.length > 0 && this.cookingSteps.shift();
     },
     addStep() {
       if (this.prepStep !== "") {
